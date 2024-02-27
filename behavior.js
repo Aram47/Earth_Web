@@ -7,7 +7,9 @@ const inputNickName = document.createElement('input');
 const password = document.createElement('input');
 const login = document.createElement('button');
 const Regform = document.createElement('form');
+
 let firstEvent;
+
 const regLabel = document.createElement('h1');
 const nme = document.createElement('input');
 const surname = document.createElement('input');
@@ -24,6 +26,7 @@ const maleLabel = document.createElement('span');
 const femaleDiv = document.createElement('div');
 const female = document.createElement('input');
 const femaleLabel = document.createElement('span');
+
 //set fields required
 let displayNoneForLogin = login.onclick = function() {
     inputNickName.style.display = "none";
@@ -139,6 +142,7 @@ function appendChildeForLogin()
 // --------------------------------------------------
 
 
+
 UL.addEventListener('mouseover', function(event) {
     UL.style.cursor = "pointer";
 
@@ -158,6 +162,7 @@ UL.addEventListener('mouseleave', function() {
     firstList.style.display = "none";
     secondList.style.display = "none";
 });
+
 
 firstList.addEventListener('click', firstEvent = function() {
 
@@ -196,7 +201,6 @@ firstList.addEventListener('click', firstEvent = function() {
 });
 
 secondList.addEventListener('click', function() {
-
 
     displayNoneForLogin();
     displayBlockForRegistration();
@@ -273,34 +277,17 @@ secondList.addEventListener('click', function() {
     
 })
 
-// const regLabel = document.createElement('h1');
-// const nme = document.createElement('input');
-// const surname = document.createElement('input');
-// const nickName = document.createElement('input');
-// const phone = document.createElement('input');
-// const age = document.createElement('input');
-// const mail = document.createElement('input');
-// const pass = document.createElement('input');
-// const repeatPassword = document.createElement('input');
-// const regButton = document.createElement('button');
-// const maleDiv = document.createElement('div');
-// const male = document.createElement('input');
-// const maleLabel = document.createElement('span');
-// const femaleDiv = document.createElement('div');
-// const female = document.createElement('input');
-// const femaleLabel = document.createElement('span');
-
-   
-// import * as bcrypt from 'bcrypt'
 
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
+
 function isCorrectPassword(pass)
 {
     return pass.value === repeatPassword.value;
 }
+
 function validateRegistration()
 {
 
@@ -322,3 +309,34 @@ function validateRegistration()
         console.log(user[val]);
     }
 }
+    
+
+
+login.onclick = function() {
+    NestedDiv.style.display = "none";
+    inputNickName.style.display = "none";
+    password.style.display = "none";
+    login.style.display = "none";
+    tableForLoginAndRegistration.style.display = "none";
+};
+
+regButton.onclick = function() {
+    regLabel.style.display = "none";
+    nme.style.display = "none";
+    surname.style.display = "none";
+    nickName.style.display = "none";
+    phone.style.display = "none";
+    age.style.display = "none";
+    mail.style.display = "none";
+    pass.style.display = "none";
+    repeatPassword.style.display = "none";
+    regButton.style.display = "none";
+    maleDiv.style.display = "none";
+    male.style.display = "none";
+    maleLabel.style.display = "none";
+    femaleDiv.style.display = "none";
+    female.style.display = "none";
+    femaleLabel.style.display = "none";
+    tableForLoginAndRegistration.style.display = "none";
+    callFirst('click', firstEvent());
+};
