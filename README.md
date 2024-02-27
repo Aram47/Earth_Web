@@ -19,5 +19,3 @@ npm install
 
 npx vite
 ```
-
->>>>>>> 854bf9a (Changes in README.md)

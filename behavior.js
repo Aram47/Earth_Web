@@ -184,7 +184,6 @@ firstList.addEventListener('click', firstEvent = function() {
 
     document.body.appendChild(tableForLoginAndRegistration);
 
-
 });
 
 secondList.addEventListener('click', function() {
@@ -238,6 +237,7 @@ secondList.addEventListener('click', function() {
     phone.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     age.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     mail.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
+
     pass.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     repeatPassword.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     regButton.style.cssText = "margin : 30px 39%; height : 25px; width : 130px; margin-top : 15px; border-radius : 5px; background-color : rgba(0,0,0,0.2); color : white"
@@ -263,7 +263,6 @@ secondList.addEventListener('click', function() {
     document.body.appendChild(tableForLoginAndRegistration);
     
 })
-
 
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -308,6 +307,10 @@ login.onclick = function() {
 };
 
 login.onclick = function() {
+    NestedDiv.style.display = "none";
+    inputNickName.style.display = "none";
+    password.style.display = "none";
+    login.style.display = "none";
     tableForLoginAndRegistration.style.display = "none";
 };
 
