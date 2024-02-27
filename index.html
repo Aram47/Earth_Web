@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth 2</title>
+    <style>
+        body { 
+            margin: 0;
+            padding: 0; 
+        }
+        #container {
+            position: absolute;
+            z-index: 15000 !important;
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+        #container > ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #container > ul > li > i {
+            width: 100%;
+            height: 100%;
+            font-size: 50px;
+            color: white;
+        }
+        #container > ul > li {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto;
+        }
+        div > canvas {
+            display: none !important;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/79f91a7469.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div id = "container">
+        <ul id = "UL">
+            <li onclick = "showMenu()" id = "Menu"><i class="fa-solid fa-bars"></i></li>
+        </ul>
+    </div>
+
+    <script src = "behavior.js"></script>
+    <script type = "module" src = "script.js"></script>
+</body>
+</html>
