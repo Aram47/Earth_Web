@@ -6,6 +6,10 @@ This project utilizes Vite and Three.js to render GLTF models.
 
 To initialize and run the project locally, follow these steps:
 
+### 1. Clone the Repository
+
+Clone the repository to your local machine using Git:
+
 ```bash
 git clone https://github.com/Aram47/Earth_Web
 
@@ -15,3 +19,5 @@ npm install
 
 npx vite
 ```
+
+>>>>>>> 854bf9a (Changes in README.md)

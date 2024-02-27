@@ -95,6 +95,7 @@ function displayBlockForRegistration()
     femaleLabel.style.display = "block";
     tableForLoginAndRegistration.style.display = "block";
 }
+
 function displayBlockForLogin()
 {
     inputNickName.style.display = "block";
@@ -102,6 +103,7 @@ function displayBlockForLogin()
     login.style.display = "block";
     tableForLoginAndRegistration.style.display = "block";
 }
+
 function appendChildeForRegistration()
 {
     Regform.appendChild(regLabel);
@@ -118,15 +120,15 @@ function appendChildeForRegistration()
     Regform.appendChild(regButton);
     tableForLoginAndRegistration.appendChild(Regform);
 }
+
 function appendChildeForLogin()
 {
     tableForLoginAndRegistration.appendChild(inputNickName);
     tableForLoginAndRegistration.appendChild(password);
     tableForLoginAndRegistration.appendChild(login);
 }
+
 // --------------------------------------------------
-
-
 
 UL.addEventListener('mouseover', function(event) {
     UL.style.cursor = "pointer";
@@ -147,7 +149,6 @@ UL.addEventListener('mouseleave', function() {
     firstList.style.display = "none";
     secondList.style.display = "none";
 });
-
 
 firstList.addEventListener('click', firstEvent = function() {
 
@@ -182,6 +183,7 @@ firstList.addEventListener('click', firstEvent = function() {
     appendChildeForLogin();
 
     document.body.appendChild(tableForLoginAndRegistration);
+
 
 });
 
@@ -302,6 +304,10 @@ login.onclick = function() {
     inputNickName.style.display = "none";
     password.style.display = "none";
     login.style.display = "none";
+
+};
+
+login.onclick = function() {
     tableForLoginAndRegistration.style.display = "none";
 };
 
