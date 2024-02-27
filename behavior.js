@@ -6,6 +6,7 @@ const tableForLoginAndRegistration = document.createElement('div');
 const inputNickName = document.createElement('input');
 const password = document.createElement('input');
 const login = document.createElement('button');
+const Regform = document.createElement('form');
 
 let firstEvent;
 
@@ -26,8 +27,7 @@ const femaleDiv = document.createElement('div');
 const female = document.createElement('input');
 const femaleLabel = document.createElement('span');
 
-
-
+//set fields required
 let displayNoneForLogin = login.onclick = function() {
     inputNickName.style.display = "none";
     password.style.display = "none";
@@ -55,27 +55,24 @@ function displayNoneForRegistration(){
     tableForLoginAndRegistration.style.display = "none";
 }
 
+function setRequired()
+{
+    nme.setAttribute('required', true);
+    surname.setAttribute('required', true);
+    nickName.setAttribute('required', true);
+    phone.setAttribute('required', true);
+    age.setAttribute('required', true);
+    mail.setAttribute('required', true);
+    pass.setAttribute('required', true);
+    repeatPassword.setAttribute('required', true);
+    male.setAttribute('required', true);
+    female.setAttribute('required', true);
+    return ;
+}
+
 regButton.onclick = function() {
-
-    regLabel.style.display = "none";
-    nme.style.display = "none";
-    surname.style.display = "none";
-    nickName.style.display = "none";
-    phone.style.display = "none";
-    age.style.display = "none";
-    mail.style.display = "none";
-    pass.style.display = "none";
-    repeatPassword.style.display = "none";
-    regButton.style.display = "none";
-    maleDiv.style.display = "none";
-    male.style.display = "none";
-    maleLabel.style.display = "none";
-    femaleDiv.style.display = "none";
-    female.style.display = "none";
-    femaleLabel.style.display = "none";
-    tableForLoginAndRegistration.style.display = "none";
-
-    firstEvent();
+    setRequired();
+    console.log();
 };
 
 function displayBlockForRegistration()
@@ -98,7 +95,6 @@ function displayBlockForRegistration()
     femaleLabel.style.display = "block";
     tableForLoginAndRegistration.style.display = "block";
 }
-
 function displayBlockForLogin()
 {
     inputNickName.style.display = "block";
@@ -106,30 +102,28 @@ function displayBlockForLogin()
     login.style.display = "block";
     tableForLoginAndRegistration.style.display = "block";
 }
-
 function appendChildeForRegistration()
 {
-    tableForLoginAndRegistration.appendChild(regLabel);
-    tableForLoginAndRegistration.appendChild(nme);
-    tableForLoginAndRegistration.appendChild(surname);
-    tableForLoginAndRegistration.appendChild(nickName);
-    tableForLoginAndRegistration.appendChild(phone);
-    tableForLoginAndRegistration.appendChild(age);
-    tableForLoginAndRegistration.appendChild(mail);
-    tableForLoginAndRegistration.appendChild(pass);
-    tableForLoginAndRegistration.appendChild(repeatPassword);
-    tableForLoginAndRegistration.appendChild(maleDiv);
-    tableForLoginAndRegistration.appendChild(femaleDiv);
-    tableForLoginAndRegistration.appendChild(regButton);
+    Regform.appendChild(regLabel);
+    Regform.appendChild(nme);
+    Regform.appendChild(surname);
+    Regform.appendChild(nickName);
+    Regform.appendChild(phone);
+    Regform.appendChild(age);
+    Regform.appendChild(mail);
+    Regform.appendChild(pass);
+    Regform.appendChild(repeatPassword);
+    Regform.appendChild(maleDiv);
+    Regform.appendChild(femaleDiv);
+    Regform.appendChild(regButton);
+    tableForLoginAndRegistration.appendChild(Regform);
 }
-
 function appendChildeForLogin()
 {
     tableForLoginAndRegistration.appendChild(inputNickName);
     tableForLoginAndRegistration.appendChild(password);
     tableForLoginAndRegistration.appendChild(login);
 }
-
 
 // --------------------------------------------------
 
@@ -241,7 +235,7 @@ secondList.addEventListener('click', function() {
     nickName.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     phone.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     age.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
-    mail.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test"; 
+    mail.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     pass.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     repeatPassword.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     regButton.style.cssText = "margin : 30px 39%; height : 25px; width : 130px; margin-top : 15px; border-radius : 5px; background-color : rgba(0,0,0,0.2); color : white"
@@ -268,38 +262,32 @@ secondList.addEventListener('click', function() {
     
 })
 
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+function isCorrectPassword(pass)
+{
+    return pass.value === repeatPassword.value;
+}
+function validateRegistration()
+{
 
-// it is a apush shebln not runable and ashxatable
-
-const fs = require('fs');
-
-fs.readFile('base.json', 'utf8', (err, data) => {
-    if (err) {
-        console.error('Error reading file:', err);
-        return;
+    const user = 
+    {
+        nme : nme.value,
+        surname : surname.value,
+        nickName : nickName.value,
+        phone : phone.value,
+        age : age.value,
+        mail : mail.value,
+        pass : pass.value,
+        repeatPassword : repeatPassword.value,
+        male : male.value,
+        female : female.value
     }
-
-    // Parse the JSON data into a JavaScript object
-  const jsonData = JSON.parse(data);
-
-  // Access the array in the JSON object
-  const array = jsonData.array;
-
-  // Create a new object to add to the array
-  const newObj = { name: 'NewName', age: 40 };
-
-  // Add the new object to the array
-  array.push(newObj);
-
-  // Convert the JavaScript object back to JSON
-  const updatedJsonData = JSON.stringify(jsonData, null, 2);
-
-  // Write the updated JSON data back to the file
-  fs.writeFile('base.json', updatedJsonData, 'utf8', (err) => {
-    if (err) {
-      console.error('Error writing file:', err);
-      return;
+    for(let val in user)
+    {
+        console.log(user[val]);
     }
-    console.log('Object added successfully!');
-  });
-});
+}
