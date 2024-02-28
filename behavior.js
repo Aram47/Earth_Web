@@ -3,7 +3,6 @@ const UL = document.getElementById("UL");
 const firstList = document.createElement('li');
 const secondList = document.createElement('li');
 const tableForLoginAndRegistration = document.createElement('div');
-const NestedDiv = document.createElement('div');
 const inputNickName = document.createElement('input');
 const password = document.createElement('input');
 const login = document.createElement('button');
@@ -29,6 +28,111 @@ const femaleLabel = document.createElement('span');
 
 
 
+let displayNoneForLogin = login.onclick = function() {
+    inputNickName.style.display = "none";
+    password.style.display = "none";
+    login.style.display = "none";
+    tableForLoginAndRegistration.style.display = "none";
+};
+
+function displayNoneForRegistration(){
+    regLabel.style.display = "none";
+    nme.style.display = "none";
+    surname.style.display = "none";
+    nickName.style.display = "none";
+    phone.style.display = "none";
+    age.style.display = "none";
+    mail.style.display = "none";
+    pass.style.display = "none";
+    repeatPassword.style.display = "none";
+    regButton.style.display = "none";
+    maleDiv.style.display = "none";
+    male.style.display = "none";
+    maleLabel.style.display = "none";
+    femaleDiv.style.display = "none";
+    female.style.display = "none";
+    femaleLabel.style.display = "none";
+    tableForLoginAndRegistration.style.display = "none";
+}
+
+regButton.onclick = function() {
+
+    regLabel.style.display = "none";
+    nme.style.display = "none";
+    surname.style.display = "none";
+    nickName.style.display = "none";
+    phone.style.display = "none";
+    age.style.display = "none";
+    mail.style.display = "none";
+    pass.style.display = "none";
+    repeatPassword.style.display = "none";
+    regButton.style.display = "none";
+    maleDiv.style.display = "none";
+    male.style.display = "none";
+    maleLabel.style.display = "none";
+    femaleDiv.style.display = "none";
+    female.style.display = "none";
+    femaleLabel.style.display = "none";
+    tableForLoginAndRegistration.style.display = "none";
+
+    firstEvent();
+};
+
+function displayBlockForRegistration()
+{
+    regLabel.style.display = "block";
+    nme.style.display = "block";
+    surname.style.display = "block";
+    nickName.style.display = "block";
+    phone.style.display = "block";
+    age.style.display = "block";
+    mail.style.display = "block";
+    pass.style.display = "block";
+    repeatPassword.style.display = "block";
+    regButton.style.display = "block";
+    maleDiv.style.display = "block";
+    male.style.display = "block";
+    maleLabel.style.display = "block";
+    femaleDiv.style.display = "block";
+    female.style.display = "block";
+    femaleLabel.style.display = "block";
+    tableForLoginAndRegistration.style.display = "block";
+}
+
+function displayBlockForLogin()
+{
+    inputNickName.style.display = "block";
+    password.style.display = "block";
+    login.style.display = "block";
+    tableForLoginAndRegistration.style.display = "block";
+}
+
+function appendChildeForRegistration()
+{
+    tableForLoginAndRegistration.appendChild(regLabel);
+    tableForLoginAndRegistration.appendChild(nme);
+    tableForLoginAndRegistration.appendChild(surname);
+    tableForLoginAndRegistration.appendChild(nickName);
+    tableForLoginAndRegistration.appendChild(phone);
+    tableForLoginAndRegistration.appendChild(age);
+    tableForLoginAndRegistration.appendChild(mail);
+    tableForLoginAndRegistration.appendChild(pass);
+    tableForLoginAndRegistration.appendChild(repeatPassword);
+    tableForLoginAndRegistration.appendChild(maleDiv);
+    tableForLoginAndRegistration.appendChild(femaleDiv);
+    tableForLoginAndRegistration.appendChild(regButton);
+}
+
+function appendChildeForLogin()
+{
+    tableForLoginAndRegistration.appendChild(inputNickName);
+    tableForLoginAndRegistration.appendChild(password);
+    tableForLoginAndRegistration.appendChild(login);
+}
+
+
+// --------------------------------------------------
+
 
 UL.addEventListener('mouseover', function(event) {
     UL.style.cursor = "pointer";
@@ -50,94 +154,47 @@ UL.addEventListener('mouseleave', function() {
     secondList.style.display = "none";
 });
 
-const callFirst = firstList.addEventListener('click', firstEvent = function() {
+firstList.addEventListener('click', firstEvent = function() {
 
-
-    NestedDiv.style.display = "block";
-    inputNickName.style.display = "block";
-    password.style.display = "block";
-    login.style.display = "block";
-    tableForLoginAndRegistration.style.display = "block";
+    displayNoneForRegistration();
+    displayBlockForLogin();
 
     // Login and Register style
     tableForLoginAndRegistration.style.cssText = "position: absolute";
     tableForLoginAndRegistration.style.width = "600px";
-    tableForLoginAndRegistration.style.height = "500px";
+    tableForLoginAndRegistration.style.height = "600px";
     tableForLoginAndRegistration.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-    tableForLoginAndRegistration.style.top = "50%";
+    tableForLoginAndRegistration.style.top = "52%";
     tableForLoginAndRegistration.style.left = "50%";
     tableForLoginAndRegistration.style.border = "2px solid rgba(100, 93, 54, 0.7)";
     tableForLoginAndRegistration.style.borderRadius = "20%";
     tableForLoginAndRegistration.style.transform = "translate(-50%, -50%)";
     tableForLoginAndRegistration.style.cssText += 'z-index: 23000 !important;';
 
-    // Nested Div style
-    NestedDiv.style.width = "200px";
-    NestedDiv.style.height = "400px";
-    NestedDiv.style.margin = "auto";
-    NestedDiv.style.position = "absolute";
-    NestedDiv.style.top = "0";
-    NestedDiv.style.left = "0";
-    NestedDiv.style.bottom = "0";
-    NestedDiv.style.right = "0";
-
     // InputNickName style
-    inputNickName.style.marginBottom = "20px";
+    inputNickName.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px";
     inputNickName.placeholder = "Nickname";
-    inputNickName.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
-    inputNickName.style.width = "100%";
-    inputNickName.style.height = "7%";
-    inputNickName.style.border = "2px solid rgba(0, 0, 0, 0.9)";
-    inputNickName.style.borderRadius = "20%";
 
     // Password style
-    password.style.marginBottom = "20px";
+    password.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px";
     password.placeholder = "Password";
-    password.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
-    password.style.width = "100%";
-    password.style.height = "7%";
-    password.style.border = "2px solid rgba(0, 0, 0, 0.9)";
-    password.style.borderRadius = "20%";
 
     // Login style
-    login.style.margin = "0 auto";
-    login.style.display = "block";
+    login.style.cssText = "margin : 30px 39%; height : 25px; width : 130px; margin-top : 15px; border-radius : 5px; background-color : rgba(0,0,0,0.2); color : white;";
     login.innerText = "Login";
-    login.style.color = "gold";
-    login.style.backgroundColor = "black";
-    login.style.width = "50%";
-    login.style.height = "7%";
-    login.style.border = "2px solid rgba(0, 0, 0, 0.9)";
-    login.style.borderRadius = "15%";
 
     // append elements
-    NestedDiv.appendChild(inputNickName);
-    NestedDiv.appendChild(password);
-    NestedDiv.appendChild(login);
-    tableForLoginAndRegistration.appendChild(NestedDiv);
+    appendChildeForLogin();
+
     document.body.appendChild(tableForLoginAndRegistration);
 
 });
 
 secondList.addEventListener('click', function() {
 
-    regLabel.style.display = "block";
-    nme.style.display = "block";
-    surname.style.display = "block";
-    nickName.style.display = "block";
-    phone.style.display = "block";
-    age.style.display = "block";
-    mail.style.display = "block";
-    pass.style.display = "block";
-    repeatPassword.style.display = "block";
-    regButton.style.display = "block";
-    maleDiv.style.display = "block";
-    male.style.display = "block";
-    maleLabel.style.display = "block";
-    femaleDiv.style.display = "block";
-    female.style.display = "block";
-    femaleLabel.style.display = "block";
-    tableForLoginAndRegistration.style.display = "block";
+
+    displayNoneForLogin();
+    displayBlockForRegistration();
 
     maleDiv.style.cssText = "display: flex; align-items: center;";
 
@@ -204,48 +261,45 @@ secondList.addEventListener('click', function() {
     pass.type = "password";
     repeatPassword.type = "password";
 
-    tableForLoginAndRegistration.appendChild(regLabel);
-    tableForLoginAndRegistration.appendChild(nme);
-    tableForLoginAndRegistration.appendChild(surname);
-    tableForLoginAndRegistration.appendChild(nickName);
-    tableForLoginAndRegistration.appendChild(phone);
-    tableForLoginAndRegistration.appendChild(age);
-    tableForLoginAndRegistration.appendChild(mail);
-    tableForLoginAndRegistration.appendChild(pass);
-    tableForLoginAndRegistration.appendChild(repeatPassword);
-    tableForLoginAndRegistration.appendChild(maleDiv);
-    tableForLoginAndRegistration.appendChild(femaleDiv);
-    tableForLoginAndRegistration.appendChild(regButton);
+
+    appendChildeForRegistration();
 
     document.body.appendChild(tableForLoginAndRegistration);
     
 })
 
-login.onclick = function() {
-    NestedDiv.style.display = "none";
-    inputNickName.style.display = "none";
-    password.style.display = "none";
-    login.style.display = "none";
-    tableForLoginAndRegistration.style.display = "none";
-};
 
-regButton.onclick = function() {
-    regLabel.style.display = "none";
-    nme.style.display = "none";
-    surname.style.display = "none";
-    nickName.style.display = "none";
-    phone.style.display = "none";
-    age.style.display = "none";
-    mail.style.display = "none";
-    pass.style.display = "none";
-    repeatPassword.style.display = "none";
-    regButton.style.display = "none";
-    maleDiv.style.display = "none";
-    male.style.display = "none";
-    maleLabel.style.display = "none";
-    femaleDiv.style.display = "none";
-    female.style.display = "none";
-    femaleLabel.style.display = "none";
-    tableForLoginAndRegistration.style.display = "none";
-    callFirst('click', firstEvent());
-};
+// it is a apush shebln not runable and ashxatable
+
+const fs = require('fs');
+
+fs.readFile('base.json', 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading file:', err);
+        return;
+    }
+
+    // Parse the JSON data into a JavaScript object
+  const jsonData = JSON.parse(data);
+
+  // Access the array in the JSON object
+  const array = jsonData.array;
+
+  // Create a new object to add to the array
+  const newObj = { name: 'NewName', age: 40 };
+
+  // Add the new object to the array
+  array.push(newObj);
+
+  // Convert the JavaScript object back to JSON
+  const updatedJsonData = JSON.stringify(jsonData, null, 2);
+
+  // Write the updated JSON data back to the file
+  fs.writeFile('base.json', updatedJsonData, 'utf8', (err) => {
+    if (err) {
+      console.error('Error writing file:', err);
+      return;
+    }
+    console.log('Object added successfully!');
+  });
+});
