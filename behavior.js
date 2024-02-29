@@ -34,6 +34,7 @@ let displayNoneForLogin = login.onclick = function() {
     login.style.display = "none";
     tableForLoginAndRegistration.style.display = "none";
 };
+
 function displayNoneForRegistration(){
     regLabel.style.display = "none";
     nme.style.display = "none";
@@ -53,6 +54,7 @@ function displayNoneForRegistration(){
     femaleLabel.style.display = "none";
     tableForLoginAndRegistration.style.display = "none";
 }
+
 function setRequired()
 {
     nme.setAttribute('required', true);
@@ -67,29 +69,12 @@ function setRequired()
     female.setAttribute('required', true);
     return ;
 }
+
 regButton.onclick = function() {
     setRequired();
     console.log();
-    // regLabel.style.display = "none";
-    // nme.style.display = "none";
-    // surname.style.display = "none";
-    // nickName.style.display = "none";
-    // phone.style.display = "none";
-    // age.style.display = "none";
-    // mail.style.display = "none";
-    // pass.style.display = "none";
-    // repeatPassword.style.display = "none";
-    // regButton.style.display = "none";
-    // maleDiv.style.display = "none";
-    // male.style.display = "none";
-    // maleLabel.style.display = "none";
-    // femaleDiv.style.display = "none";
-    // female.style.display = "none";
-    // femaleLabel.style.display = "none";
-    // tableForLoginAndRegistration.style.display = "none";
-    // firstEvent();
-    // validateRegistration();
 };
+
 function displayBlockForRegistration()
 {
     regLabel.style.display = "block";
