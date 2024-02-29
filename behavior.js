@@ -268,38 +268,3 @@ secondList.addEventListener('click', function() {
     
 })
 
-
-// it is a apush shebln not runable and ashxatable
-
-const fs = require('fs');
-
-fs.readFile('base.json', 'utf8', (err, data) => {
-    if (err) {
-        console.error('Error reading file:', err);
-        return;
-    }
-
-    // Parse the JSON data into a JavaScript object
-  const jsonData = JSON.parse(data);
-
-  // Access the array in the JSON object
-  const array = jsonData.array;
-
-  // Create a new object to add to the array
-  const newObj = { name: 'NewName', age: 40 };
-
-  // Add the new object to the array
-  array.push(newObj);
-
-  // Convert the JavaScript object back to JSON
-  const updatedJsonData = JSON.stringify(jsonData, null, 2);
-
-  // Write the updated JSON data back to the file
-  fs.writeFile('base.json', updatedJsonData, 'utf8', (err) => {
-    if (err) {
-      console.error('Error writing file:', err);
-      return;
-    }
-    console.log('Object added successfully!');
-  });
-});
