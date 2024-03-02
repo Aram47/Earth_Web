@@ -1,14 +1,1 @@
-[
-  {
-    "nme": "Hayko",
-    "surname": "Martirosyan",
-    "nickName": "Hayko",
-    "phone": "+37498098358",
-    "age": "21",
-    "mail": "jahsdg@mail.com",
-    "pass": "art",
-    "repeatPassword": "art",
-    "male": true,
-    "female": false
-  }
-]
+[]

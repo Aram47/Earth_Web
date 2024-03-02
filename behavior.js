@@ -136,12 +136,13 @@ login.onclick = function(e)
         nickName : inputNickName.value,
         pass : password.value,
     }
-
-    fetch('http://localhost:3000/getUserByNicknameAndPassword', {
+    
+    fetch('http://0.0.0.0:3000/getUserByNickname', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
     },
+    
     body: JSON.stringify(user),
     })
     .then(response => {
@@ -224,7 +225,6 @@ function displayBlockForLogin()
 
 function appendChildeForRegistration()
 {
-
     Regform.appendChild(regLabel);
     Regform.appendChild(nme);
     Regform.appendChild(surname);
@@ -246,10 +246,6 @@ function appendChildeForLogin()
     tableForLoginAndRegistration.appendChild(password);
     tableForLoginAndRegistration.appendChild(login);
 }
-
-
-// --------------------------------------------------
-
 
 UL.addEventListener('mouseover', function(event) {
     UL.style.cursor = "pointer";
@@ -295,6 +291,7 @@ firstList.addEventListener('click', firstEvent = function() {
     // Password style
     password.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px";
     password.placeholder = "Password";
+    password.type = "password"
 
     // Login style
     login.style.cssText = "margin : 30px 39%; height : 25px; width : 130px; margin-top : 15px; border-radius : 5px; background-color : rgba(0,0,0,0.2); color : white;";
