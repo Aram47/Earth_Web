@@ -1,3 +1,4 @@
+// import * as bcript from 'bcryptjs'
 const list = document.getElementById("Menu");
 const UL = document.getElementById("UL");
 const firstList = document.createElement('li');
@@ -6,6 +7,7 @@ const tableForLoginAndRegistration = document.createElement('div');
 const inputNickName = document.createElement('input');
 const password = document.createElement('input');
 const login = document.createElement('button');
+const Regform = document.createElement('form');
 
 let firstEvent;
 
@@ -28,11 +30,16 @@ const femaleLabel = document.createElement('span');
 
 
 
+
+
+
+
+
 let displayNoneForLogin = login.onclick = function() {
     inputNickName.style.display = "none";
     password.style.display = "none";
     login.style.display = "none";
-    tableForLoginAndRegistration.style.display = "none";
+    tableForLoginAndRegistration.style.display = "none"; 
 };
 
 function displayNoneForRegistration(){
@@ -55,27 +62,135 @@ function displayNoneForRegistration(){
     tableForLoginAndRegistration.style.display = "none";
 }
 
-regButton.onclick = function() {
+// function setRequired()
+// {
+//     nme.setAttribute('required', true);
+//     surname.setAttribute('required', true);
+//     nickName.setAttribute('required', true);
+//     phone.setAttribute('required', true);
+//     age.setAttribute('required', true);
+//     mail.setAttribute('required', true);
+//     pass.setAttribute('required', true);
+//     repeatPassword.setAttribute('required', true);
+//     male.setAttribute('required', true);
+//     female.setAttribute('required', true);
+// }
+function isValidEmail() {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(mail.value);
+}
 
-    regLabel.style.display = "none";
-    nme.style.display = "none";
-    surname.style.display = "none";
-    nickName.style.display = "none";
-    phone.style.display = "none";
-    age.style.display = "none";
-    mail.style.display = "none";
-    pass.style.display = "none";
-    repeatPassword.style.display = "none";
-    regButton.style.display = "none";
-    maleDiv.style.display = "none";
-    male.style.display = "none";
-    maleLabel.style.display = "none";
-    femaleDiv.style.display = "none";
-    female.style.display = "none";
-    femaleLabel.style.display = "none";
-    tableForLoginAndRegistration.style.display = "none";
+function isCorrectPassword()
+{
+    return pass.value == repeatPassword.value;
+}
 
-    firstEvent();
+function isFilled()
+{
+    if (nme.value !== "" && surname.value !== "" && nickName.value !== "" && phone.value !== "" && 
+    age.value !== "" && mail.value !== "" && pass.value !== "" && repeatPassword.value !== "" && 
+    male.checked || female.checked) {
+        return true
+    }
+    else{
+        return false;
+    }
+}
+function isValidInput()
+{
+    return (isCorrectPassword() && isValidEmail());
+}
+import { PhoneNumberUtil } from 'google-libphonenumber';
+// const PhoneNumberUtil = require('google-libphonenumber').PhoneNumberUtil;
+const phoneUtil = PhoneNumberUtil.getInstance();
+
+function validatePhoneNumber() {
+  try {
+    // Parse the phone number without specifying a region code
+    const parsedPhoneNumber = phoneUtil.parse(phone.value);
+    
+    // Get the region code inferred from the phone number
+    // const regCode = phoneUtil.getRegionCodeForNumber(parsedPhoneNumber);
+
+    // Check if the parsed phone number is valid
+    const isValid = phoneUtil.isValidNumber(parsedPhoneNumber);
+    
+    return true;
+  } catch (error) {
+    // Error occurred during parsing
+    console.error('Error parsing phone number:', error);
+    return false;
+  }
+}
+
+// Example usage
+// const phoneNumber = '+1234567890'; // Phone number to validate
+// const { isValid, regionCode } = validatePhoneNumber(phoneNumber);
+// console.log('Is valid phone number?', isValid);
+// console.log('Inferred region code:', regionCode);
+login.onclick = function(e)
+{
+    e.preventDefault();
+    const user = 
+    {
+        nickName : inputNickName.value,
+        pass : password.value,
+    }
+
+    fetch('http://localhost:3000/getUserByNicknameAndPassword', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        else
+        {
+            inputNickName.style.display = "none";
+            password.style.display = "none";
+            login.style.display = "none";
+            tableForLoginAndRegistration.style.display = "none";
+            alert("You are logged succssesfully");
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Server response:', data);
+    })
+    .catch(error => {
+        console.error('Error sending data:', error);
+    });
+}
+regButton.onclick = function(e) {
+    e.preventDefault();
+    if (isFilled() && isValidInput() && validatePhoneNumber()) {
+        regLabel.style.display = "none";
+        nme.style.display = "none";
+        surname.style.display = "none";
+        nickName.style.display = "none";
+        phone.style.display = "none";
+        age.style.display = "none";
+        mail.style.display = "none";
+        pass.style.display = "none";
+        repeatPassword.style.display = "none";
+        regButton.style.display = "none";
+        maleDiv.style.display = "none";
+        male.style.display = "none";
+        maleLabel.style.display = "none";
+        femaleDiv.style.display = "none";
+        female.style.display = "none";
+        femaleLabel.style.display = "none";
+        tableForLoginAndRegistration.style.display = "none";
+        // console.log("minchev validateRegistration");
+        validateRegistration();
+        // console.log("minchev firstEvent");
+        firstEvent();
+        // validateRegistration();
+    }
 };
 
 function displayBlockForRegistration()
@@ -109,18 +224,20 @@ function displayBlockForLogin()
 
 function appendChildeForRegistration()
 {
-    tableForLoginAndRegistration.appendChild(regLabel);
-    tableForLoginAndRegistration.appendChild(nme);
-    tableForLoginAndRegistration.appendChild(surname);
-    tableForLoginAndRegistration.appendChild(nickName);
-    tableForLoginAndRegistration.appendChild(phone);
-    tableForLoginAndRegistration.appendChild(age);
-    tableForLoginAndRegistration.appendChild(mail);
-    tableForLoginAndRegistration.appendChild(pass);
-    tableForLoginAndRegistration.appendChild(repeatPassword);
-    tableForLoginAndRegistration.appendChild(maleDiv);
-    tableForLoginAndRegistration.appendChild(femaleDiv);
-    tableForLoginAndRegistration.appendChild(regButton);
+
+    Regform.appendChild(regLabel);
+    Regform.appendChild(nme);
+    Regform.appendChild(surname);
+    Regform.appendChild(nickName);
+    Regform.appendChild(phone);
+    Regform.appendChild(age);
+    Regform.appendChild(mail);
+    Regform.appendChild(pass);
+    Regform.appendChild(repeatPassword);
+    Regform.appendChild(maleDiv);
+    Regform.appendChild(femaleDiv);
+    Regform.appendChild(regButton);
+    tableForLoginAndRegistration.appendChild(Regform);
 }
 
 function appendChildeForLogin()
@@ -241,7 +358,7 @@ secondList.addEventListener('click', function() {
     nickName.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     phone.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     age.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
-    mail.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test"; 
+    mail.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     pass.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     repeatPassword.style.cssText = "display : block; margin : auto; height : 25px; width : 200px; margin-top : 15px; border-radius : 10px; background-color : rgba(0,0,0,0.3); placeholder : test; color : white; font-size : 16px"; 
     regButton.style.cssText = "margin : 30px 39%; height : 25px; width : 130px; margin-top : 15px; border-radius : 5px; background-color : rgba(0,0,0,0.2); color : white"
@@ -255,7 +372,8 @@ secondList.addEventListener('click', function() {
     pass.placeholder = "Enter your password";
     repeatPassword.placeholder = "Repeat your password";
 
-    phone.type = "number";
+    phone.type = "tel";
+    phone.name = "phone";
     age.type = "number";
     mail.type = "mail";
     pass.type = "password";
@@ -267,4 +385,52 @@ secondList.addEventListener('click', function() {
     document.body.appendChild(tableForLoginAndRegistration);
     
 })
+
+function validateRegistration()
+{
+    const user = 
+    {
+        nme : nme.value,
+        surname : surname.value,
+        nickName : nickName.value,
+        phone : phone.value,
+        age : age.value,
+        mail : mail.value,
+        pass : pass.value,
+        repeatPassword : repeatPassword.value,
+        male : male.checked,
+        female : female.checked,
+    }
+    
+    fetch('http://localhost:3000/addUser', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Server response:', data);
+    })
+    .catch(error => {
+        console.error('Error sending data:', error);
+    });
+}
+
+  
+
+
+
+
+
+
+
+
+
 

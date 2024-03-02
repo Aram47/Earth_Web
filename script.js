@@ -4,10 +4,10 @@ import Stats from 'three/examples/jsm/libs/stats.module';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 const scene = new THREE.Scene();
-const axesHelper = new THREE.AxesHelper(5);
-scene.add(axesHelper);
+// const axesHelper = new THREE.AxesHelper(5);
+// scene.add(axesHelper);
 
-axesHelper.setColors(0, 0, 0);
+// axesHelper.setColors(0, 0, 0);
 
 var light = new THREE.SpotLight();
 light.position.set(5, 5, 5);
